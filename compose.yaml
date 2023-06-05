@@ -1,0 +1,5 @@
+services:
+  log-analytics-demo:
+    image: log-analytics-demo:0.0.1-SNAPSHOT
+    ports:
+      - 8080
