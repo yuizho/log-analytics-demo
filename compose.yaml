@@ -1,5 +1,6 @@
 services:
-  log-analytics-demo:
-    image: log-analytics-demo:0.0.1-SNAPSHOT
-    ports:
-      - 8080
+  fluentd:
+    image: fluent/fluentd
+    volumes:
+      - ./fluentd/conf:/fluentd/etc
+      - ./logs:/fluentd/logs
