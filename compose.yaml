@@ -1,6 +1,6 @@
 services:
   fluentd:
-    image: fluent/fluentd
+    build: ./fluentd
     volumes:
       - ./fluentd/conf:/fluentd/etc
       - ./logs:/fluentd/logs
