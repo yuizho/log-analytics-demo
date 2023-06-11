@@ -7,7 +7,7 @@
         <RollingRandomAccessFile name="RollingRandomAccessFile" fileName="logs/app.log"
                                  filePattern="logs/app-%d{MM-dd-yyyy}-%i.log.gz">
             <PatternLayout>
-                <Pattern>%d{ISO8601} %p %c{1.} [%t] [%X{latency}] %m%n</Pattern>
+                <Pattern>%d{ISO8601} %p %c{1.} [%X{latency}] [%t] %m%n</Pattern>
             </PatternLayout>
             <Policies>
                 <TimeBasedTriggeringPolicy />
