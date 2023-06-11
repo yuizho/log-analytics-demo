@@ -2,8 +2,11 @@ package com.github.yuizho.loganalyticsdemo.controllers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.random.RandomGenerator;
 
 @RestController
 public class HelloController {
@@ -11,7 +14,18 @@ public class HelloController {
 
     @RequestMapping("hello")
     public String hello() {
-        logger.info("hello!!!");
+        long start = System.currentTimeMillis();
+        try {
+            Thread.sleep(RandomGenerator.getDefault().nextInt(500));
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        long end = System.currentTimeMillis();
+        MDC.put("latency", String.valueOf(end - start));
+
+        logger.info("Hello!! my job was finished!!");
+
+        MDC.remove("latency");
         return "hello";
     }
 }
