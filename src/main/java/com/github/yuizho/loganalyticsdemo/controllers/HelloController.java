@@ -22,10 +22,12 @@ public class HelloController {
         }
         long end = System.currentTimeMillis();
         MDC.put("latency", String.valueOf(end - start));
+        MDC.put("id", String.valueOf(RandomGenerator.getDefault().nextInt(10000)));
 
         logger.info("Hello!! my job was finished!!");
 
         MDC.remove("latency");
+        MDC.remove("id");
         return "hello";
     }
 }
